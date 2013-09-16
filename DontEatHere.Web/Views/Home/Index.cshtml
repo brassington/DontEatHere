@@ -1,0 +1,93 @@
+﻿@model LinqToExcel.Query.ExcelQueryable<DontEatHere.Web.Models.InspectionRecord>
+@{
+    ViewBag.Title = "Home Page";
+}
+<!-- Main -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="http://behance.vo.llnwd.net/profiles9/1934911/projects/6313571/1fcc94db0b290c2cfad3b1b11a4819e8.png">
+        </div>
+        <!-- /span-3 -->
+        <div class="col-md12 col-md-9" style="display: block;">
+            <!-- Right -->
+            <div class="panel">
+                <div class="panel-heading text-center">
+                    <i class="icon icon-chevron-up chevron"></i>
+                    <i class="icon icon-wrench pull-right"></i>
+                    Houston
+                </div>
+                <div class="panel-content">
+                    <div class="btn-group btn-group-justified">
+                        <a href="#" class="btn btn-primary col-sm-3">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <p>Add</p>
+                        </a>
+                        <a href="#" class="btn btn-primary col-sm-3">
+                            <i class="glyphicon glyphicon-search"></i>
+                            <p>Cloud</p>
+                        </a>
+                        <a href="#" class="btn btn-primary col-sm-3">
+                            <i class="glyphicon glyphicon-cog"></i>
+                            <p>Tools</p>
+                        </a>
+                        <a href="#" class="btn btn-primary col-sm-3">
+                            <i class="glyphicon glyphicon-question-sign"></i>
+                            <p>Help</p>
+                        </a>
+                    </div>
+                </div>
+                <!--/panel content-->
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md2 col-md12 col-md-12" style="display: block;">
+                    <div class="well hidden">
+                        Inbox Messages
+                <span class="badge pull-right">3</span>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Search:
+                        </label>
+                        <input type="search" class="form-control" placeholder="Enter Zip Code Here">
+                    </div>
+                    <!--/panel-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Report
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Inspection Date
+                                    </th>
+                                    <th>Name
+                                    </th>
+                                    <th>Address
+                                    </th>
+                                    <th>Violation
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {<tr>
+                                    <td>
+                                        @item.InspectionDate
+                                    </td>
+                                    <td>
+                                        @item.FacilityName
+                                    </td>
+                                    <td>
+                                        @item.Address
+                                    </td>
+                                    <td>
+                                        @item.Comment
+                                    </td>
+                                </tr>}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--/panel-->
+                    

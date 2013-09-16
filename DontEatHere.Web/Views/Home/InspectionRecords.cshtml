@@ -1,0 +1,165 @@
+﻿@model LinqToExcel.Query.ExcelQueryable<DontEatHere.Web.Models.InspectionRecord>
+@{
+    ViewBag.Title = "InspectionRecords";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string previousFacilityName = "";
+    string previousAddress = "";
+    string previousInspectionDate = "";
+}
+<!-- Main -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <img src="..\Content\donteathere.jpg"><br />
+            <div style="font-family: 'Sigmar One', normal; font-weight: 400; font-size: 3em;">Don't Eat Here!</div>            
+        </div>
+        <!-- /span-3 -->
+        <div class="col-md12 col-md-9" style="display: block;">
+            <!-- Right -->
+            <div class="panel">
+                <div class="panel-heading text-center">
+                    <i class="icon icon-chevron-up chevron"></i>
+                    <i class="icon icon-wrench pull-right"></i>
+                    Houston
+                </div>
+                <div class="panel-content">
+                    <div class="btn-group btn-group-justified">
+                        <a href="#" class="btn btn-primary col-sm-3">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <p>Add</p>
+                        </a>
+                        <a href="#" class="btn btn-primary col-sm-3">
+                            <i class="glyphicon glyphicon-search"></i>
+                            <p>Cloud</p>
+                        </a>
+                        <a href="#" class="btn btn-primary col-sm-3">
+                            <i class="glyphicon glyphicon-cog"></i>
+                            <p>Tools</p>
+                        </a>
+                        <a href="#" class="btn btn-primary col-sm-3">
+                            <i class="glyphicon glyphicon-question-sign"></i>
+                            <p>Help</p>
+                        </a>
+                    </div>
+                </div>
+                <!--/panel content-->
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md2 col-md12 col-md-12" style="display: block;">
+                    <div class="well hidden">
+                        Inbox Messages
+                <span class="badge pull-right">3</span>
+                    </div>
+                    <div class="form-group">
+                        @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                        {
+                        <div class="col-lg-4">
+                             <div class="input-group">
+                                <input type="search" class="form-control" placeholder="Enter Zip Code Here" name="zip">
+                                <span class="input-group-btn input-group-lg">
+                                <button class="btn btn-default" type="submit">Search</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 pull-right">
+                        <div class="input-group">
+                            <span class="input-group-addon">Filter</span>
+                            <input type="text" class="form-control" placeholder="by Keyword" id="search">
+                        </div>
+                        </div>
+                        }
+                        <style id="search_style"></style>
+                        <script type="text/javascript">
+                            var searchStyle = document.getElementById('search_style');
+                            document.getElementById('search').addEventListener('input', function () {
+                                if (!this.value) {
+                                    searchStyle.innerHTML = "";
+                                    return;
+                                }
+                                // look ma, no indexOf!
+                                searchStyle.innerHTML = ".searchable:not([data-index*=\"" + this.value.toLowerCase() + "\"]) { display: none; }";
+                                // beware of css injections!
+                            });
+                        </script>
+
+                    </div>
+                    <div class="clearfix" style="margin-bottom: 1em;"></div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2>Inspection Records</h2>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name
+                                    </th>
+                                    <th>Address
+                                    </th>
+                                    <th>Inspection Date
+                                    </th>
+                                    <th>Violation
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {<tr class="searchable" data-index="@item.FacilityName.ToLower()@item.Address.ToLower()@item.InspectionDate.ToLower()@item.Comment.ToLower()">
+                                    <td>
+                                        @if (item.FacilityName == previousFacilityName)
+                                        {   //Do not relist FacilityName
+                                        }
+                                        else
+                                        {
+                                            @item.FacilityName
+                                            //previousFacilityName set in Inspection Date below
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (item.Address == previousAddress)
+                                        {   //Do not relist address
+                                        }
+                                        else
+                                        {
+                                            @item.Address
+                                            previousAddress = item.Address;
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (item.InspectionDate == previousInspectionDate && item.FacilityName == previousFacilityName)
+                                        {   //Do not relist address
+                                        }
+                                        else
+                                        {
+                                            @item.InspectionDate
+                                            previousInspectionDate = item.InspectionDate;
+                                            previousFacilityName = item.FacilityName;
+                                        }
+                                    </td>
+                                    <td>
+                                        @item.Comment
+                                    </td>
+                                </tr>}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--/panel-->
+                    <div class="panel panel-default hidden">
+                        <div class="panel-heading">
+                            Charts
+                        </div>
+                        <div class="panel-body">
+                            <img src="http://www.wired.com/playbook/wp-content/uploads/2012/08/data-tracking-run-chart.jpg"
+                                class="img-responsive">
+                        </div>
+                    </div>
+                    <!--/panel-->
+                </div>
+                <!--/col-span-6-->
+            </div>
+            <!--/row-->
+        </div>
+        <!--/col-span-9-->
+    </div>
+</div>
+<!-- /Main -->
