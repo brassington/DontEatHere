@@ -1,9 +1,0 @@
-c:\Users\Jacob\Documents\Visual Studio 2012\Projects\DontEatHere\DontEatHere.WPF\bin\Debug\DontEatHere.WPF.exe.config
-c:\Users\Jacob\Documents\Visual Studio 2012\Projects\DontEatHere\DontEatHere.WPF\obj\Debug\DontEatHere.WPF.csprojResolveAssemblyReference.cache
-c:\Users\Jacob\Documents\Visual Studio 2012\Projects\DontEatHere\DontEatHere.WPF\obj\Debug\MainWindow.baml
-c:\Users\Jacob\Documents\Visual Studio 2012\Projects\DontEatHere\DontEatHere.WPF\obj\Debug\MainWindow.g.cs
-c:\Users\Jacob\Documents\Visual Studio 2012\Projects\DontEatHere\DontEatHere.WPF\obj\Debug\App.g.cs
-c:\Users\Jacob\Documents\Visual Studio 2012\Projects\DontEatHere\DontEatHere.WPF\obj\Debug\DontEatHere.WPF_MarkupCompile.cache
-c:\Users\Jacob\Documents\Visual Studio 2012\Projects\DontEatHere\DontEatHere.WPF\obj\Debug\DontEatHere.WPF.g.resources
-c:\Users\Jacob\Documents\Visual Studio 2012\Projects\DontEatHere\DontEatHere.WPF\obj\Debug\DontEatHere.WPF.Properties.Resources.resources
-c:\Users\Jacob\Documents\Visual Studio 2012\Projects\DontEatHere\DontEatHere.WPF\obj\Debug\DontEatHere.WPF.csproj.GenerateResource.Cache
